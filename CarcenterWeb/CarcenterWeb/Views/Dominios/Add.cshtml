@@ -1,0 +1,40 @@
+﻿@model CarcenterWeb.Models.DTOs.DominiosDTO
+@{
+    ViewBag.Title = "Agregar Dominios";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <!--inicio de formulario de insercion
+          params (1->action, 2->controller, 3->method, 4->params)-->
+        @using (Html.BeginForm("Add", "Dominios", FormMethod.Post, new { role = "Form" }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationMessage("Error", new { @class = "text-danger" })
+            <!--mostrar lable para el atributo tipo dominio, tal como se especifico en el Data Annotatio-->
+
+            @Html.LabelFor(d => d.TipoDominio)
+            <!--texbox para recibir valor de tipo dominio-->
+            @Html.TextBoxFor(d => d.TipoDominio, new { @class = "form-control" })
+            @Html.ValidationMessage("TipoDominio", new { @class = "text-danger" })
+            <br />
+
+            @Html.LabelFor(d => d.IdDominio)
+            @Html.TextBoxFor(d => d.IdDominio, new { @class = "form-control" })
+            @Html.ValidationMessage("IdDominio", new { @class = "text-danger" })
+            <br />
+
+            @Html.LabelFor(d => d.VlrDominio)
+            @Html.TextBoxFor(d => d.VlrDominio, new { @class = "form-control" })
+            @Html.ValidationMessage("VlrDominio", new { @class = "text-danger" })
+
+            <div style="text-align: right">
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
+
+    </div>
+</div>
